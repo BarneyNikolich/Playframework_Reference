@@ -1,7 +1,14 @@
-@(message: String)
 
-@main("Welcome to Play") {
+@main("Barneys Scala PlayFramework Wiki") {
 
-    @play20.welcome(message)
+    <h1>Barneys PlayFramework Examples</h1>
+    <br>
+
+    <ul>
+        <li><a href ="@routes.FormsController.viewForm()"> Form Revision</a></li>
+    </ul>
+    <ul>
+        <li><a href ="@routes.ListController.index()"> Lists </a></li>
+    </ul>
 
 }

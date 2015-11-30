@@ -1,0 +1,22 @@
+@(myForm: Form[models.dto.TestForm])(implicit messages: Messages)
+
+@main("form") {
+
+<!--The helper form creates a form and points it to the submit method in the formcontroller which handles the input-->
+@helper.form(action = routes.FormsController.submit()) {
+
+
+    @helper.inputText(
+    myForm("textInput"),
+    '_label -> "Text"
+    )
+
+
+
+}
+
+
+
+
+
+}
