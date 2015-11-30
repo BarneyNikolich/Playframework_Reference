@@ -17,7 +17,17 @@ class FormsController extends Controller {
     Ok(views.html.forms.showForm(TestForm.form))
   }
 
-  def submit = TODO
+  def submit = Action {   implicit request =>
+    TestForm.form.bindFromRequest.fold(
+      formWithErrors => {
+        BadRequest(views.html.index())
+      },
+      myFormDto => {
+        Ok(myFormDto.toString)
+
+      }
+    )
+  }
 }
 
 
