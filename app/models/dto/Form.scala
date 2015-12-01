@@ -10,7 +10,7 @@ import play.api.data.Form
 case class TestForm(text: String,
                     optionalText: Option[String],
                     number: Int,
-                    select: String,
+                    select: Int,
                     radioBtn: String,
                     date: LocalDate,
                     password: String,
@@ -23,14 +23,14 @@ object TestForm {
     mapping(
       "text" -> nonEmptyText,
       "optionalText" -> optional(text),
-      "number" -> number.verifying("Number must be above 100", i => i.equals(10) ),
-      "select" -> text,
+      "number" -> number,
+      "select" -> number,
       "radioBtn" -> text,
       "date" -> jodaLocalDate.verifying("Date must be in the past!", d => d.isBefore(LocalDate.now.plusDays(1))),
       "password" -> text(8, 15),
       "confirmPassword" -> text(8, 15),
       "tickBox" -> boolean.verifying("Must click the tick box!", c => c.equals(true))
-    ) (TestForm.apply)(TestForm.unapply) verifying("Passwords must match", field => field.password.equals(field.confirmPassword))
+    ) (TestForm.apply)(TestForm.unapply).verifying("Passwords must match", field => field.password.equals(field.confirmPassword))
   )
 
 }

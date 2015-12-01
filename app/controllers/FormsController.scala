@@ -17,18 +17,35 @@ class FormsController extends Controller {
     Ok(views.html.forms.showForm(TestForm.form))
   }
 
-  def submit = Action {   implicit request =>
-    TestForm.form.bindFromRequest.fold(
+  def submit = Action { implicit request =>
+      TestForm.form.bindFromRequest.fold(
       formWithErrors => {
-        BadRequest(views.html.index())
+        println(formWithErrors)
+        BadRequest(views.html.forms.showForm(formWithErrors))
       },
-      myFormDto => {
-        Ok(myFormDto.toString)
-
-      }
-    )
+        myFormDto => {
+          val formResults = List(
+//          Scala string Interpolating
+            s"textInput: ${myFormDto.text}",
+            s"optionTextInput: ${myFormDto.optionalText}",
+            s"number: ${myFormDto.number}",
+            s"select: ${myFormDto.select}",
+            s"radioBtn: ${myFormDto.radioBtn}",
+            s"date: ${myFormDto.date}",
+            s"password: ${myFormDto.password}",
+            s"confirmPassword: ${myFormDto.confirmPassword}",
+            s"tickBox: ${myFormDto.tickBox}"
+          )
+          Redirect(routes.FormsController.formResults(formResults)) //Redirect the submit action to the formResults method. This is a post.
+        }
+      )
   }
-}
 
+  def formResults(results: List[String]) = Action {
+    Ok(views.html.forms.formResults(results))
+  }
+
+
+}
 
 object FormsController extends FormsController

@@ -10,3 +10,4 @@ class Application extends Controller {
   }
 
 }
+object Application extends Application

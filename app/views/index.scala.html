@@ -1,14 +1,18 @@
 
 @main("Barneys Scala PlayFramework Wiki") {
 
-    <h1>Barneys PlayFramework Examples</h1>
+    <div class="jumbotron">
+        <h1>Barney's PlayFramework Examples</h1>
+    </div>
+
     <br>
 
-    <ul>
-        <li><a href ="@routes.FormsController.viewForm()"> Form Revision</a></li>
-    </ul>
-    <ul>
-        <li><a href ="@routes.ListController.index()"> Lists </a></li>
-    </ul>
+    <div class="list-group">
+        <ul class="list-group">
+            <li class="list-group-item"><a href ="@routes.FormsController.viewForm()"> Form Revision</a></li>
+            <li class="list-group-item"><a href ="@routes.ListController.index()"> Lists </a></li>
+        </ul>
+    </div>
+
 
 }

@@ -2,28 +2,95 @@
 
 @main("form") {
 
+<!--Implement a Dynamic breadcrumb which uses the current url to construct the breadcrumb - parse it then construct -->
+
+    <ol class="breadcrumb">
+        <li><a href="@routes.Application.index()">Home</a></li>
+        <li class="active">Forms</li>
+        <!--<li><a href="@routes.ListController.index()">List</a></li>-->
+    </ol>
+
+    <div class="jumbotron">
+        <h1>Form Examples</h1>
+        <p>This page contains example of popular forms used in the play framework.
+            View the back end code to understand functionality.
+        </p>
+    </div>
+
+
+
+@if(myForm.hasGlobalErrors){
+<div class="alert alert-danger" role="alert">
+    @for(error <- myForm.errors){
+    <p>@error.message</p>
+    }
+</div>
+}
+
 <!--The helper form creates a form and points it to the submit method in the formcontroller which handles the input-->
 @helper.form(action = routes.FormsController.submit()) {
 
-
+<!--Standard text input form. id = textInput. Show constraints shows the field must be filled.-->
     @helper.inputText(
-    myForm("textInput"),
-    '_label -> "Text"
+    myForm("text"),
+    '_label -> "Text",
+    '_showConstraints -> false
     )
 
     @helper.inputText(
-    myForm("option text"),
+    myForm("optionalText"),
     '_label -> "Optional Text"
+    )
+
+<!--Input text but must be a number-->
+    @helper.inputText(
+    myForm("number"),
+    '_label -> "Number"
+    )
+
+<!--A select drop down menu. Uses a list as input-->
+    @helper.select(
+    myForm("select"),
+    helper.options(List("-- select --", "1", "2", "3", "4")),
+    '_label -> "Select button"
+    )
+
+<!--A radio button selection-->
+    @helper.inputRadioGroup(
+    myForm("radioBtn"),
+    helper.options(List("yes", "no", "maybe")),
+    '_label -> "Radio Buttons"
+    )
+
+    @helper.inputDate(
+    myForm("date"),
+    '_label -> "Date searcher!"
+    )
+
+    @helper.inputPassword(
+    myForm("password"),
+    '_label -> "Password"
+    )
+
+    @helper.inputPassword(
+    myForm("confirmPassword"),
+    '_label -> "Password Confirmation",
+    '_showConstraints -> false
+    )
+
+    @helper.checkbox(
+    myForm("tickBox"),
+    '_label -> "Checkbox input",
+    '_showConstraints -> false
     )
 
     <button class="btn btn-primary" type="submit">Submit</button>
 
-
-
-
 }
 
-
+<footer>
+<h6 style="text-align: left;" class="text-muted">Barney's PlayFramework Examples &copy 2015 - Learning environment</h6>
+</footer>
 
 
 
