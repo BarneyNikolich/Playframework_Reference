@@ -1,3 +1,6 @@
+@*********************
+* Example of comments *
+*********************@
 @(fellRunners: List[FellRunner], user: User)
 
 @main("Template Example") {
@@ -13,13 +16,52 @@
         </p>
     </div>
 
-<h1> Welcome @user.name</h1>
+    <h1> Welcome @user.name</h1>
 
-        <ul>
+
+        <pre>
+            <p>This block dynamically uses a for loop to print Famous fell runners</p>
             @for(fellRunner <- fellRunners){
-            <li>@fellRunner.name</li>
+            @fellRunner.name
             }
-        </ul>
+            <p>The code is as follows:</p>
+            @@for(fellRunner <- fellRunners){
+            @@fellRunner.name
+            }
+        </pre>
+
+        <pre>
+            <h2>If statements in the template </h2>
+            Printing the amount of runners in the list
+            @if(fellRunners.isEmpty) {
+             <p>Nothing to display</p>
+            } else {
+            <h3>@fellRunners.size runners!</h3>
+            }
+
+            Code is as follows:
+
+            <p>@@if(fellRunners.isEmpty) {
+             Nothing to display
+            } else {
+            @@fellRunners.size runners!
+            }
+            </p>
+        </pre>
+
+
+    <p><pre>
+    <h4>Template parameters</h4>
+    A template is like a function, so it needs parameters, which must be declared at the top of the template file:
+
+    @@(customer: Customer, orders: List[Order])
+    You can also use default values for parameters:
+
+    @@(title: String = "Home")
+    Or even several parameter groups:
+
+    @@(title: String)(body: Html)
+    </pre></p>
 
 
 }

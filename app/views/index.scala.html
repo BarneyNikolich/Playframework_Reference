@@ -1,8 +1,8 @@
-
+@(user: User, contents: List[String])
 @main("Barneys Scala PlayFramework Wiki") {
 
     <div class="jumbotron">
-        <h1>Barney's PlayFramework Examples</h1>
+        <h1>@user.name PlayFramework Examples</h1>
     </div>
 
     <br>
@@ -13,8 +13,8 @@
             <li class="list-group-item">
                 <div class="list-group">
                     <a href ="@routes.Templates.index">
-                        <h3 style="color:green;" class="list-group-item-heading"><strong>Template Engine Examples</strong></h3>
-                        <p class="list-group-item-text">Renders a template using Plays and ....</p>
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>@contents(0)</strong></h3>
+                        <p class="list-group-item-text">Renders a template using Plays Features and Dynamic content using the @@</p>
                     </a>
                 </div>
             </li>
@@ -22,7 +22,7 @@
             <li class="list-group-item">
                 <div class="list-group">
                     <a href ="@routes.FormsController.viewForm()">
-                        <h3 style="color:green;" class="list-group-item-heading"><strong>Form Revision</strong></h3>
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>@contents(1)</strong></h3>
                         <p class="list-group-item-text">A collection of all types of lists. Useful examples</p>
                     </a>
                 </div>
@@ -31,7 +31,7 @@
             <li class="list-group-item">
                 <div class="list-group">
                     <a href ="@routes.Json.index()">
-                        <h3 style="color:green;" class="list-group-item-heading"><strong>Basic Json Parsing</strong></h3>
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>@contents(2)</strong></h3>
                         <p class="list-group-item-text">Introduction to Json parsing. Using Play's Json objects and conversions</p>
                     </a>
                 </div>
@@ -40,7 +40,7 @@
             <li class="list-group-item">
                 <div class="list-group">
                     <a href ="@routes.ListController.index()">
-                        <h3 style="color:green;" class="list-group-item-heading"><strong>Lists</strong></h3>
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>@contents(3)</strong></h3>
                         <p class="list-group-item-text">Introduction to Json parsing. Using Play's Json objects and conversions</p>
                     </a>
                 </div>
@@ -48,11 +48,5 @@
         </ul>
 
     </div>
-
-
-
-
-
-
 
 }

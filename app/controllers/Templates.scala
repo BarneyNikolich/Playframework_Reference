@@ -16,8 +16,9 @@ class Templates extends Controller {
   )
 
   def index = Action {
-    Ok(views.html.template(runners, models.User("Barn")))
+    Ok(views.html.template(runners, models.User("Barn", "barn", "password")))
   }
+
 
 
 
