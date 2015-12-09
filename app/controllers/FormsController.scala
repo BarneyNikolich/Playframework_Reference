@@ -1,7 +1,6 @@
 package controllers
 
-
-import models.dto.TestForm
+import models.TestForm
 import play.api.mvc.{Controller, Action}
 import play.api.Play.current
 import play.api.i18n.Messages.Implicits._

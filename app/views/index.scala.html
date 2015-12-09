@@ -8,11 +8,51 @@
     <br>
 
     <div class="list-group">
+
         <ul class="list-group">
-            <li class="list-group-item"><a href ="@routes.FormsController.viewForm()"> Form Revision</a></li>
-            <li class="list-group-item"><a href ="@routes.ListController.index()"> Lists </a></li>
+            <li class="list-group-item">
+                <div class="list-group">
+                    <a href ="@routes.Templates.index">
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>Template Engine Examples</strong></h3>
+                        <p class="list-group-item-text">Renders a template using Plays and ....</p>
+                    </a>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="list-group">
+                    <a href ="@routes.FormsController.viewForm()">
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>Form Revision</strong></h3>
+                        <p class="list-group-item-text">A collection of all types of lists. Useful examples</p>
+                    </a>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="list-group">
+                    <a href ="@routes.Json.index()">
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>Basic Json Parsing</strong></h3>
+                        <p class="list-group-item-text">Introduction to Json parsing. Using Play's Json objects and conversions</p>
+                    </a>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="list-group">
+                    <a href ="@routes.ListController.index()">
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>Lists</strong></h3>
+                        <p class="list-group-item-text">Introduction to Json parsing. Using Play's Json objects and conversions</p>
+                    </a>
+                </div>
+            </li>
         </ul>
+
     </div>
+
+
+
+
+
 
 
 }

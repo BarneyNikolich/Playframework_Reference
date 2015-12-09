@@ -1,0 +1,25 @@
+@(fellRunners: List[FellRunner], user: User)
+
+@main("Template Example") {
+
+    <ol class="breadcrumb">
+        <li><a href="@routes.Application.index()">Home</a></li>
+        <li class="active">Template Examples</li>
+    </ol>
+
+    <div class="jumbotron">
+        <h1>Template Example</h1>
+        <p>Hey @user.name. This page contains template examples. Look at the back end code to figure out how it works!
+        </p>
+    </div>
+
+<h1> Welcome @user.name</h1>
+
+        <ul>
+            @for(fellRunner <- fellRunners){
+            <li>@fellRunner.name</li>
+            }
+        </ul>
+
+
+}

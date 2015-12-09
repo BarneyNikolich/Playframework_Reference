@@ -1,4 +1,4 @@
-package models.dto
+package models
 
 import org.joda.time.LocalDate
 import play.api.data.Forms._
@@ -26,7 +26,7 @@ object TestForm {
       "number" -> number,
       "select" -> number,
       "radioBtn" -> text,
-      "date" -> jodaLocalDate.verifying("Date must be in the past!", d => d.isBefore(LocalDate.now.plusDays(1))),
+      "date" -> jodaLocalDate.verifying(  "Date must be in the past!", d => d.isBefore(LocalDate.now.plusDays(1))),
       "password" -> text(8, 15),
       "confirmPassword" -> text(8, 15),
       "tickBox" -> boolean.verifying("Must click the tick box!", c => c.equals(true))
