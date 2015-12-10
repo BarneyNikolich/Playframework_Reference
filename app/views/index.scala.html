@@ -1,8 +1,10 @@
-@(user: User, contents: List[String])
+@(contents: List[String])(implicit request: Request[AnyContent])
 @main("Barneys Scala PlayFramework Wiki") {
 
+<h1>Welcome @request.session.get("username").fold("")(n => n)!</h1>
+
     <div class="jumbotron">
-        <h1>@user.name PlayFramework Examples</h1>
+        <h1>@request.session.get("username").fold("")(n => n)'s PlayFramework Examples</h1>
     </div>
 
     <br>
@@ -12,7 +14,7 @@
         <ul class="list-group">
             <li class="list-group-item">
                 <div class="list-group">
-                    <a href ="@routes.Templates.index">
+                    <a href ="@routes.Templates.templates()">
                         <h3 style="color:green;" class="list-group-item-heading"><strong>@contents(0)</strong></h3>
                         <p class="list-group-item-text">Renders a template using Plays Features and Dynamic content using the @@</p>
                     </a>

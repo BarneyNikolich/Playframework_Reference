@@ -3,9 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /                           controllers.Application.viewForm
+POST    /                           controllers.Application.submitUsername()
 
-GET     /templates                  controllers.Templates.index
+GET     /index                      controllers.Application.index
+
+GET     /templates                  controllers.Templates.templates
+
 GET     /forms                      controllers.FormsController.viewForm
 POST    /forms                      controllers.FormsController.submit()
 GET     /forms/results              controllers.FormsController.formResults(filledForm: List[String])

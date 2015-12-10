@@ -1,0 +1,21 @@
+@(form: Form[UserData])(implicit messages: Messages)
+
+@main("form") {
+
+<h1>Enter your username.</h1>
+
+@helper.form(action = routes.Application.submitUsername()) {
+
+<!--Standard text input form. id = textInput. Show constraints shows the field must be filled.-->
+@helper.inputText(
+form("name"),
+'_label -> "Text",
+'_showConstraints -> false
+)
+
+<button class="btn btn-primary" type="submit">Submit</button>
+}
+
+
+}
+

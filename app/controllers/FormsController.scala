@@ -1,22 +1,31 @@
 package controllers
 
+import controllers.auth.AuthAction
 import models.TestForm
-import play.api.mvc.{Controller, Action}
+import play.api.mvc._
 import play.api.Play.current
 import play.api.i18n.Messages.Implicits._
+
+import scala.concurrent.Future
 
 
 /**
  * Created by barn on 30/11/15.
  */
-class FormsController extends Controller {
+class FormsController extends AuthAction {
 
-
-  def viewForm = Action {
-    Ok(views.html.forms.showForm(TestForm.form))
+  /**
+   * Example of checking whethere there is a session and redirecting without using the AuthAction.
+   */
+  def viewForm = Action { implicit request =>
+    val username = request.session.get("username")
+    username match{
+      case Some(user) => Ok(views.html.forms.showForm(TestForm.form))
+      case None => Redirect(routes.Application.viewForm())
+    }
   }
 
-  def submit = Action { implicit request =>
+  def submit = AuthAction { implicit request =>
       TestForm.form.bindFromRequest.fold(
       formWithErrors => {
         println(formWithErrors)

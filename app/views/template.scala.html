@@ -1,7 +1,7 @@
 @*********************
 * Example of comments *
 *********************@
-@(fellRunners: List[FellRunner], user: User)
+@(fellRunners: List[FellRunner])(implicit request: Request[AnyContent])
 
 @main("Template Example") {
 
@@ -12,12 +12,14 @@
 
     <div class="jumbotron">
         <h1>Template Example</h1>
-        <p>Hey @user.name. This page contains template examples. Look at the back end code to figure out how it works!
+        <p>This page contains template examples. Look at the back end code to figure out how it works!
         </p>
     </div>
 
-    <h1> Welcome @user.name</h1>
-
+    <h1> Welcome @request.session.get("username").fold("")(n => n)</h1>
+            <!-- Above line: gets the session username from the implicit request passed in,
+                 .fold on fail returns an empty string and if successful does n => n
+             -->
 
         <pre>
             <p>This block dynamically uses a for loop to print Famous fell runners</p>
