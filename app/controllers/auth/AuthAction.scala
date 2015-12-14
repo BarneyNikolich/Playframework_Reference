@@ -24,11 +24,9 @@ trait AuthAction extends Controller {
   }
 
    /*
-    *
     * The below code does what the AuthAction does but you insert this into each method.
     * Rather than AuthAction which is passed as Parameter
     *
-
     val username = request.session.get("username")
     username match {
       case Some(user) => Ok(views.html.index(user, contentsList))

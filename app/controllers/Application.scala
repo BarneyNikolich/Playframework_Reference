@@ -32,7 +32,7 @@ class Application extends AuthAction {
   }
 
   def submitUsername = Action { implicit request =>
-    println("The URI is: " + request.uri)
+    //println("The URI is: " + request.uri)
       UserData.userForm.bindFromRequest.fold(
         errors => {
           println(errors)
