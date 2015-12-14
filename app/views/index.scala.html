@@ -1,7 +1,16 @@
 @(contents: List[String])(implicit request: Request[AnyContent])
+
 @main("Barneys Scala PlayFramework Wiki") {
 
-<h1>Welcome @request.session.get("username").fold("")(n => n)!</h1>
+<ul>
+    <li class="pull-left">
+        <h1>Welcome @request.session.get("username").fold("")(n => n)!</h1>
+    </li>
+    <li class="pull-right btn" >
+        <a href="@routes.loginController.logout">Log Out</a>
+    </li>
+</ul>
+
 
     <div class="jumbotron">
         <h1>@request.session.get("username").fold("")(n => n)'s PlayFramework Examples</h1>
@@ -47,6 +56,27 @@
                     </a>
                 </div>
             </li>
+
+            <li class="list-group-item">
+                <div class="list-group">
+                    <a href ="@routes.WrapperController.index()">
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>@contents(4)</strong></h3>
+                        <p class="list-group-item-text">An example of Template Wrapper. Can be used for a
+                            failure page with numerous failure pages. All similar but with different content</p>
+                    </a>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="list-group">
+                    <a href ="@routes.WrapperController.index()">
+                        <h3 style="color:green;" class="list-group-item-heading"><strong>@contents(5)</strong></h3>
+                        <p class="list-group-item-text">An example of Template Wrapper. Can be used for a
+                            failure page with numerous failure pages. All similar but with different content</p>
+                    </a>
+                </div>
+            </li>
+
         </ul>
 
     </div>

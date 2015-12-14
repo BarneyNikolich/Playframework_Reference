@@ -17,8 +17,8 @@ trait AuthAction extends Controller {
   def AuthAction(block: Request[AnyContent] => Result): Action[AnyContent] = {
     Action { request =>
       request.session.get("username") match {
-        case Some(user) => block(request)
-        case None => Redirect(routes.Application.viewForm())
+        case Some(user) => block(request)   //Checks for a username variable.
+        case None => Redirect(routes.loginController.viewForm())
       }
     }
   }

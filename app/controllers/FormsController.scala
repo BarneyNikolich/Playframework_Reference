@@ -21,7 +21,7 @@ class FormsController extends AuthAction {
     val username = request.session.get("username")
     username match{
       case Some(user) => Ok(views.html.forms.showForm(TestForm.form))
-      case None => Redirect(routes.Application.viewForm())
+      case None => Redirect(routes.loginController.viewForm())
     }
   }
 

@@ -1,10 +1,10 @@
 @(form: Form[UserData])(implicit messages: Messages)
 
-@main("form") {
+@main("Log in") {
 
 <h1>Enter your username.</h1>
 
-@helper.form(action = routes.Application.submitUsername()) {
+@helper.form(action = routes.loginController.submitUsername()) {
 
 <!--Standard text input form. id = textInput. Show constraints shows the field must be filled.-->
 @helper.inputText(

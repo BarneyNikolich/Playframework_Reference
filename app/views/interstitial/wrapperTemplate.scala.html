@@ -1,0 +1,20 @@
+@(header: String, title: String)(content: Html)
+
+
+@main(title){
+
+  <h1>Welcome to Generic page</h1>
+  <h5>current page: @header</h5>
+    <p>This content must be shown on all 3 pages</p>
+    <p>for example a button which takes you back to the home page</p>
+    <p>Or a failure heading, with specific information about the failure below</p>
+
+  <h4> Specific page content is found below </h4>
+
+  @content
+
+  <h2>good bye</h2>
+
+  <a href="@controllers.routes.Application.index" class="btn btn-primary">Contents</a>
+
+}

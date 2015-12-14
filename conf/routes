@@ -3,8 +3,9 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.viewForm
-POST    /                           controllers.Application.submitUsername()
+GET     /                           controllers.loginController.viewForm
+POST    /                           controllers.loginController.submitUsername()
+GET     /logout                     controllers.loginController.logout
 
 GET     /index                      controllers.Application.index
 
@@ -16,6 +17,13 @@ GET     /forms/results              controllers.FormsController.formResults(fill
 
 GET     /lists                      controllers.ListController.index()
 GET     /json                       controllers.Json.index()
+
+GET     /wrapper-index              controllers.WrapperController.index
+GET     /page1                      controllers.WrapperController.displayPage1
+GET     /page2                      controllers.WrapperController.displayPage2
+GET     /page3                      controllers.WrapperController.displayPage3
+
+GET     /json/listRunnersAsJason    controllers.Json.listRunnersToJson
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
