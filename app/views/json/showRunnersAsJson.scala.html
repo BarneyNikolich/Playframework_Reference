@@ -1,6 +1,14 @@
 @import play.api.libs.json.JsValue
 
-@(listOfRunners: JsValue)
+@(runnersAsJson: JsValue)
 
+@main("Runners"){
 
-<h2>@listOfRunners</h2>
+  <pre>
+
+    <h4>@runnersAsJson</h4>
+
+  </pre>
+  <a href="@controllers.routes.Json.index" class="btn btn-primary">Back</a>
+
+}

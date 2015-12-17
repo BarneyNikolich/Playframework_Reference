@@ -1,7 +1,47 @@
 @main("Json") {
 
-    <ul>
-    <li><a href="@routes.Json.listRunnersToJson">Print Fell Runners from a list to Json</a></li>
-    </ul>
+  <ol class="breadcrumb">
+    <li><a href="@routes.Application.index()">Home</a></li>
+    <li class="active">Json Parsing</li>
+  </ol>
+
+  <div class="jumbotron">
+    <h1>Json Parsing</h1>
+  </div>
+
+
+
+
+  <pre>
+      <p>Following code creates a List od Fell runners. Click the button to see this converted to Json.</p>
+      <code color="red">
+          case class Runner(name: String, age: Int, shoe: String)
+          object Runner {
+          implicit val runnersWrite = Format(Json.reads[Runner], Json.writes[Runner])
+          }
+
+          case class FellRunners(runners: List[Runner])
+          object FellRunners {
+          implicit val fellRunnersWrite = Format(Json.reads[FellRunners], Json.writes[FellRunners])
+          }
+
+          val fellRunners = FellRunners(List(Runner("Jezz Bragg", 43, "North Face"),
+          Runner("Joss Naylor", 76, "Keswick"), Runner("Karren Nash", 48, "Run Further")))
+      </code>
+      <a href="@routes.Json.listRunnersToJson" class="btn btn-primary">Print Fell Runners from a list to Json</a>
+  </pre>
+  <pre>
+      <code>
+          val numbers = Seq(1, 3, 55, 6, 77, 85, 3)
+
+          def seqNumbers = Action {
+          val seqJson = Json.toJson(numbers)
+          Ok(views.html.json.showRunnersAsJson(seqJson))
+          }
+      </code>
+    <a href="@routes.Json.seqNumbers" class="btn btn-primary">Print a sequence of numbers as Json</a>
+  </pre>
+
+
 
 }

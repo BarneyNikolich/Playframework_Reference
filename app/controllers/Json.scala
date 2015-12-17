@@ -15,7 +15,6 @@ class Json extends AuthAction {
     Ok(views.html.json.jsonHome())
   }
 
-
   case class Person(name: String)
   object Person{
     implicit val personWrites = Json.format[Person] //Creates an implicit writes val. The implicit val toJson call requires
@@ -67,7 +66,6 @@ class Json extends AuthAction {
   /**
    * Converting from Scala to Json
    */
-
   case class Runner(name: String, age: Int, shoe: String)
   object Runner {
     implicit val runnersWrite = Format(Json.reads[Runner], Json.writes[Runner])
@@ -78,20 +76,37 @@ class Json extends AuthAction {
     implicit val fellRunnersWrite = Format(Json.reads[FellRunners], Json.writes[FellRunners])
   }
 
-
   val fellRunners = FellRunners(List(Runner("Jezz Bragg", 43, "North Face"),
     Runner("Joss Naylor", 76, "Keswick"), Runner("Karren Nash", 48, "Run Further")))
 
-
-
   def listRunnersToJson = Action { request =>
     val listOfRunnersAsJson = Json.toJson(fellRunners)
+    println(listOfRunnersAsJson)
     Ok(views.html.json.showRunnersAsJson(listOfRunnersAsJson))
   }
 
+  case class RealPerson(name: String, age: Int)
 
+  val personsList = List(
+    RealPerson("Barney Nikolich", 21),
+    RealPerson("Sushil", 33),
+    RealPerson("Anonymous", 22),
+    RealPerson("John Densmore", 33)
+  )
 
+  //  Converts the local list personsList to json
+  def returnListOfPeople = Action { request =>
+    implicit val listWrites = Json.format[RealPerson] //Implicit writes val of type RealPersons is required to convert to JSON.
+    val listOfPeopleAsJson = Json.toJson(personsList) //Takes secon implicit value as declared line above
+    Ok("JSON SHOULD RETURN LIST OF PEOPLE: " + listOfPeopleAsJson + request)
+  }
 
+  val numbers = Seq(1, 3, 55, 6, 77, 85, 3)
+
+  def seqNumbers = Action {
+    val seqJson = Json.toJson(numbers)
+    Ok(views.html.json.showRunnersAsJson(seqJson))
+  }
 
 
 

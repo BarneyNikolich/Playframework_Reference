@@ -3,9 +3,9 @@
 @main("Barneys Scala PlayFramework Wiki") {
 
 <ul>
-    <li class="pull-left">
+
         <h1>Welcome @request.session.get("username").fold("")(n => n)!</h1>
-    </li>
+
     <li class="pull-right btn" >
         <a href="@routes.loginController.logout">Log Out</a>
     </li>
